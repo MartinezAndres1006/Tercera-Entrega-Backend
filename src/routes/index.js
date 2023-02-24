@@ -11,38 +11,30 @@ import log4js from 'log4js'
 log4js.configure({
     appenders:{
         consola: { type: "console" },
-        debugFile: { type: "file", filename: './debug.log'},
-        warn:{type:"file",filename: './warn.log'},
-        error:{type:"file",filename:'./error.log'} 
+        info: { type: "file", filename: './.log/debug.log'},
+        warn:{type:"file",filename: './.log/warn.log'},
+        error:{type:"file",filename:'./.log/error.log'} 
     },
 
 
     categories:{
         default:{
-            appenders: ["consola"],
+            appenders: ["consola","info"],
             level:"ALL"
         },
-        dev:{
-            appenders: ["consola"],
-            level:"ALL"
-
-        },
-        prod:{
-            error:{
-                appenders: ["error"],
+        error:{
+            appenders:["error"],
             level:"ERROR"
-            },
-            warn:{
-                appenders: ["warn"],
+        },
+        warn:{
+            appenders:["warn"],
             level:"WARN"
-            },
-            info:{appenders:["debugFile"],
-            level: "INFO"}
         }
+
     }
 })
 
-const logger= log4js.getLogger('prod')
+const logger= log4js.getLogger('error')
 
 
 const info = [{
@@ -119,6 +111,7 @@ router.get('/errorLogin', (req, res) => {
 });
 
 router.get('/info',(req,res)=>{
+    console.log(info);
     logger.info(info)
 res.send(info)
 })

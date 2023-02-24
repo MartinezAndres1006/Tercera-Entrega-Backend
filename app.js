@@ -30,6 +30,13 @@ if (cluster.isPrimary && modeServer == 'cluster') {
         cluster.fork()
     }
 
+    cluster.on('exit', worker => {
+        console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
+        cluster.fork()})
+ 
+
+    
+
 } else {
     const app = express()
     
