@@ -14,7 +14,7 @@ dotenv.config({ path: './.env' })
 import compression from "compression";
 
 // Variables 
-const clave = process.env.secret
+const clave = "coder"
 const puerto = portServer || 8080
 const mode = modeServer || "Fork"
 const cpu = core.cpus().length

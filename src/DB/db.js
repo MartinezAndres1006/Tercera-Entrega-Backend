@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config({path:'./.env'})
-export const AtlasMongo= process.env.mongoUrl
+export const AtlasMongo= "mongodb+srv://AndresMartinez:andres10062003@e-commerce.ejqa4yi.mongodb.net/test?retryWrites=true&w=majority"
 
 
 mongoose.set('strictQuery', false)
