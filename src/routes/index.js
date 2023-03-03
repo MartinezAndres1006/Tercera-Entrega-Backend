@@ -78,6 +78,16 @@ router.get('/home', isAuth, (req, res) => {
 
 });
 
+
+
+router.get('/products',(req,res)=>{
+
+    res.render('')
+})
+
+
+
+
 router.get('/login', (req, res) => {
     res.render('login');
 });

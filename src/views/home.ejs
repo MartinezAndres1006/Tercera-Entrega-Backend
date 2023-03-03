@@ -17,10 +17,44 @@
     <title>Bienvenido</title>
 </head>
 <body>
-    <div class="cuerpo">
-        <span><h1>Bienvenido <%=nombre%></h1></span>
-        <a href="/logout" class="btn btn-primary">Cerrar sesion</a>
+    <main class="contenedor">
 
-    </div>
+
+
+
+        <div class="container-fluid d-flex justify-content-center">
+      
+      <div class="contenedor">
+              <h1>Bienvenido <%=nombre%></h1>
+              <a href="/logout" class="btn btn-primary botoncito">Logout</a>
+      </div>
+      </div>
+      <form class="col-md-6" action="/products" enctype="multipart/form-data" method="post">
+                    <h1>Ingreso de productos a la pagina</h1>
+                    <div class="form-group">
+      
+                        <label for="exampleInputEmail1">Ingresa tu producto acá</label>
+                        <input name="article" type="name" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Producto">
+                        <small id="emailHelp" class="form-text text-muted">Cada producto que ingreses, va a aparecer en
+                            el
+                            siguiente apartado</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Ingresa acá el precio</label>
+                        <input name="price" type="name" class="form-control" id="exampleInputPassword1"
+                            placeholder="Precio">
+                    </div>
+                    <div class="custom-file">
+                        <input type="url" class="custom-file-input btn btn-primary botoncito" id="customFileLang"lang="es" name="image">
+                    </div>
+                    <button type="submit" class="btn btn-primary botoncito" id="addProduct">Añadir</button>
+                </form>
+                
+            </section>
+      
+      
+        </div>
+      </main>
 </body>
 </html>
