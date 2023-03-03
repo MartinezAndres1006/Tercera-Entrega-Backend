@@ -8,10 +8,10 @@ import { AtlasMongo } from "./src/DB/db.js";
 import './src/DB/models/usuarios.js'
 import './src/passport/passportConfig.js'
 import { modeServer,portServer } from "./src/passport/yargsconfig.js";
-import cluster from "cluster";
 import core from 'os'
 dotenv.config({ path: './.env' })
-import compression from "compression";
+// import cluster from "cluster";
+// import compression from "compression";
 
 // Variables 
 const clave = process.env.secret
@@ -22,29 +22,29 @@ const cpu = core.cpus().length
  
 
 // Aca empieza la magia con el cluster
-if (cluster.isPrimary && modeServer == 'cluster') {
-    console.log(`Servidor corriendo en el puerto ${portServer}💻 en modo ${modeServer} con un processId ${process.pid}`);
+// if (cluster.isPrimary && modeServer == 'cluster') {
+//     console.log(`Servidor corriendo en el puerto ${portServer}💻 en modo ${modeServer} con un processId ${process.pid}`);
 
 
-    for (let i = 0; i < cpu; i++) {
-        cluster.fork()
-    }
+//     for (let i = 0; i < cpu; i++) {
+//         cluster.fork()
+//     }
 
-    cluster.on('exit', worker => {
-        console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
-        cluster.fork()})
+//     cluster.on('exit', worker => {
+//         console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
+//         cluster.fork()})
  
 
     
 
-} else {
+// } else {
     const app = express()
     
     // compression
     // app.use(compression())
 
     app.listen(puerto, (req, res) => {
-        console.log(`server up con un proceso ${process.pid} y su puerto ${puerto} en el modo ${mode}`);
+        console.log(`server up con un proceso ${process.pid} y su puerto ${puerto}`);
     })
 
 
@@ -83,4 +83,3 @@ if (cluster.isPrimary && modeServer == 'cluster') {
 
 
 
-}
