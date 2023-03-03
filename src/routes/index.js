@@ -127,18 +127,18 @@ res.send(info)
 })
 
 
-// router.get("/randoms", (req, res) => {
-//     const cant = req.query.cant || 100000000;
-//     const Hijo = fork("./src/routes/randoms.js");
-//     Hijo.send(cant);
-//     Hijo.on("message", (msg) => {
-//       res.send(msg);
-//     });
+router.get("/randoms", (req, res) => {
+    const cant = req.query.cant || 100000000;
+    const Hijo = fork("./src/routes/randoms.js");
+    Hijo.send(cant);
+    Hijo.on("message", (msg) => {
+      res.send(msg);
+    });
   
-//     Hijo.on("exit", (code) => {
-//       console.log("Se ha cerrado el proceso", code);
-//     });
-//   });
+    Hijo.on("exit", (code) => {
+      console.log("Se ha cerrado el proceso", code);
+    });
+  });
 
   router.use(function(req, res, next) {
     logger.warn('La ruta seleccionada no existe')
